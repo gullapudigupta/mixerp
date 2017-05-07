@@ -5,6 +5,8 @@
         public int ItemId { get; set; }
         public string ItemCode { get; set; }
         public string ItemName { get; set; }
+        public int ItemSoldPoints { get; set; }
+
         public bool IsCompoundItem { get; set; }
     }
 }

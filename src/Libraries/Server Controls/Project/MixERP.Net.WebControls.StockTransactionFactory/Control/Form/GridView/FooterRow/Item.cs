@@ -5,6 +5,9 @@ namespace MixERP.Net.WebControls.StockTransactionFactory
 {
     public partial class StockTransactionForm
     {
+		
+		
+		
         private static void CreateItemCodeField(TableRow row)
         {
             using (TableCell cell = new TableCell())

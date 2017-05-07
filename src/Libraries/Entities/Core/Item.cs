@@ -21,6 +21,13 @@ namespace MixERP.Net.Entities.Core
         [ColumnDbType("varchar", 150, false, "")]
         public string ItemName { get; set; }
 
+
+        [Column("item_sold_points")]
+        [ColumnDbType("int4", 0, false, "")]
+        public int ItemSoldPoints { get; set; }
+        
+
+
         [Column("item_group_id")]
         [ColumnDbType("int4", 0, false, "")]
         public int ItemGroupId { get; set; }

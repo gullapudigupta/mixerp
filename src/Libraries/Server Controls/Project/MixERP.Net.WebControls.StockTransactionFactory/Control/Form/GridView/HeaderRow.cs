@@ -25,6 +25,7 @@ namespace MixERP.Net.WebControls.StockTransactionFactory
                 TableHelper.CreateHeaderCell(header, Titles.Tax, "TaxInputText");
                 TableHelper.CreateHeaderCell(header, Titles.Action, null);
 
+				
                 grid.Rows.Add(header);
             }
         }

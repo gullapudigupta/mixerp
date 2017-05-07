@@ -212,6 +212,7 @@ namespace MixERP.Net.Core.Modules.Inventory.Services
                     ItemId = item.ItemId,
                     ItemCode = item.ItemCode,
                     ItemName = item.ItemName,
+                    ItemSoldPoints = item.ItemSoldPoints,
                     IsCompoundItem = false
                 });
             }
@@ -223,6 +224,7 @@ namespace MixERP.Net.Core.Modules.Inventory.Services
                     ItemId = item.CompoundItemId,
                     ItemCode = item.CompoundItemCode,
                     ItemName = item.CompoundItemName,
+                   // ItemSoldPoints = item.ItemSoldPoints,
                     IsCompoundItem = true
                 });
             }
@@ -241,6 +243,7 @@ namespace MixERP.Net.Core.Modules.Inventory.Services
                     ItemId = item.ItemId,
                     ItemCode = item.ItemCode,
                     ItemName = item.ItemName,
+                    ItemSoldPoints=item.ItemSoldPoints,
                     IsCompoundItem = false
                 });
             }
@@ -259,6 +262,7 @@ namespace MixERP.Net.Core.Modules.Inventory.Services
                     ItemId = item.ItemId,
                     ItemCode = item.ItemCode,
                     ItemName = item.ItemName,
+                    ItemSoldPoints = item.ItemSoldPoints,
                     IsCompoundItem = false
                 });
             }

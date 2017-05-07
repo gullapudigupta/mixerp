@@ -6,6 +6,7 @@ namespace MixERP.Net.WebControls.StockAdjustmentFactory
 {
     public partial class FormView
     {
+		
         private void AddButton(TableRow row)
         {
             using (TableCell cell = this.GetCell())

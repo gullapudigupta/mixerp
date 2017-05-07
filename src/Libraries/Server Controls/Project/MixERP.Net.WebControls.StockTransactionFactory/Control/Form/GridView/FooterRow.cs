@@ -11,6 +11,7 @@ namespace MixERP.Net.WebControls.StockTransactionFactory
                 row.TableSection = TableRowSection.TableBody;
                 row.CssClass = "ui footer-row form";
 
+				
                 CreateItemCodeField(row);
                 CreateItemField(row);
                 CreateQuantityField(row);

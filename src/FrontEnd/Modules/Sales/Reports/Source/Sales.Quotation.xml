@@ -83,6 +83,7 @@
         SELECT
         core.items.item_code,
         core.items.item_name,
+        core.items.item_sold_points,
         transactions.non_gl_stock_details.quantity,
         core.units.unit_name,
         transactions.non_gl_stock_details.price,

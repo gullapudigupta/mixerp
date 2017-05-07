@@ -1,6 +1,8 @@
 ﻿function loadGrid() {
     function filteredRequest(pageNumber, queryStrings) {
+      //  alert(scrudFactory.viewAPI);
         var url = scrudFactory.viewAPI + "/get-where/" + pageNumber;
+        //alert(url);
         data = JSON.stringify(getAjaxFilters(queryStrings));
         return getAjaxRequest(url, "POST", data);
     };

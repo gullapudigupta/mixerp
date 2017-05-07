@@ -3,6 +3,7 @@ var dateTextBox = $("#DateTextBox");
 var errorLabel = $("#ErrorLabel");
 var itemIdHidden = $("#ItemIdHidden");
 var itemCodeInputText = $("#ItemCodeInputText");
+var itemSoldPointsInputtext = $("#ItemCodePointsText");
 var itemSelect = $("#ItemSelect");
 var quantityInputText = $("#QuantityInputText");
 var referenceNumberInputText = $("#ReferenceNumberInputText");
@@ -18,11 +19,12 @@ var sourceStoreSelect = $("#SourceStoreSelect");
 
 var url = "";
 var data = "";
-
+var dataInstances = {};
 $(document).ready(function () {
     loadStores();
     loadItems();
     loadShippers();
+    
 });
 
 addButton.click(function () {
@@ -168,7 +170,7 @@ saveButton.click(function () {
     var tableData = tableToJSON(transferGridView);
 
     //Ignore resharper warning on this
-    if (validateSides == true) {
+    if (validateSides === true) {
         if (Validate(tableData)) {
             Callback();
             return true;
@@ -246,6 +248,9 @@ function GetCredit(table, index) {
 
 itemSelect.change(function () {
     itemCodeInputText.val(itemSelect.getSelectedValue());
+   var itemSoldPointsValue= getSelectedItemData(window.dataInstances.itemsData, itemSelect.getSelectedValue(), "ItemCode");
+   itemSoldPointsInputtext.val(itemSoldPointsValue);
+    //itemPointsInputtext.va
     loadUnits();
 });
 
@@ -260,6 +265,19 @@ itemCodeInputText.blur(function () {
     };
 });
 
+function getSelectedItemData( data,key,Column)
+{
+    var returnresult = 0;
+    for (var i = 0; i < data.length; i++) {
+        var tempData = data[i];
+
+        if (tempData[Column] === key)
+        {
+            returnresult  =tempData["ItemSoldPoints"] ;
+        }
+    }
+    return returnresult;
+}
 //Ajax Data-binding
 function loadStores() {
     if (storeSelect.length) {
@@ -286,7 +304,8 @@ function loadItems() {
     url = itemServiceUrl;
     data = appendParameter("", "tranBook", "StockAdjustment");
     data = getData(data);
-
+    dataInstances.itemsData = data;
+    window.dataInstances = dataInstances;
     ajaxDataBind(url, itemSelect, data, null, itemCodeInputText, null, "ItemCode", "ItemName");
 };
 
