@@ -28,6 +28,8 @@ namespace MixERP.Net.FrontEnd.Application
                 Log.Verbose("Handling exception.");
 
                 MixERPException.Handle(exception);
+
+
                 return;
             }
 
