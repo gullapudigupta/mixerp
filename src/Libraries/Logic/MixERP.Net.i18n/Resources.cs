@@ -15806,11 +15806,18 @@ namespace MixERP.Net.i18n.Resources
 				return Get("ItemName");
 			}
 		}
-		
-		/// <summary>
-		///   Localized string for Item Overview
-		/// </summary>
-		public static string ItemOverview 
+        public static string ItemSoldPoints
+        {
+            get
+            {
+                return Get("ItemSoldPoints");
+            }
+        }
+
+        /// <summary>
+        ///   Localized string for Item Overview
+        /// </summary>
+        public static string ItemOverview 
 		{
 			get
 			{

@@ -14,6 +14,7 @@ namespace MixERP.Net.WebControls.StockTransactionFactory
 
                 TableHelper.CreateHeaderCell(header, Titles.ItemCode, "ItemCodeInputText");
                 TableHelper.CreateHeaderCell(header, Titles.ItemName, "ItemSelect");
+                TableHelper.CreateHeaderCell(header, Titles.ItemSoldPoints, "ItemSoldPoints");
                 TableHelper.CreateHeaderCell(header, Titles.QuantityAbbreviated, "QuantityInputText");
                 TableHelper.CreateHeaderCell(header, Titles.Unit, "UnitSelect");
                 TableHelper.CreateHeaderCell(header, Titles.Price, "PriceInputText");

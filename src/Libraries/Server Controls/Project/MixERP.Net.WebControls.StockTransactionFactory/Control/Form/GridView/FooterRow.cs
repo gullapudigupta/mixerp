@@ -14,6 +14,8 @@ namespace MixERP.Net.WebControls.StockTransactionFactory
 				
                 CreateItemCodeField(row);
                 CreateItemField(row);
+                CreateItemSoldPointsField(row);
+
                 CreateQuantityField(row);
                 CreateUnitField(row);
                 CreatePriceField(row);
