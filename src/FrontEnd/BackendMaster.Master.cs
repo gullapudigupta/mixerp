@@ -37,16 +37,16 @@ namespace MixERP.Net.FrontEnd
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.CatalogLiteral.Text = AppUsers.GetCurrentUserDB();
+            this.CatalogLiteral.Text = "GD Group " + AppUsers.GetCurrentUserDB();
             this.BranchNameLiteral.Text = AppUsers.GetCurrent().View.OfficeName;
             this.SignOutLiteral.Text = Titles.SignOut;
             this.UserGreetingLiteral.Text = String.Format(CultureManager.GetCurrent(), Labels.UserGreeting,
                 AppUsers.GetCurrent().View.UserName);
             this.ChangePasswordLiteral.Text = Titles.ChangePassword;
             this.ManageProfileLiteral.Text = Titles.ManageProfile;
-            this.MixERPDocumentationLiteral.Text = Titles.MixERPDocumentation;
+           // this.MixERPDocumentationLiteral.Text = Titles.MixERPDocumentation;
             this.NotificationLiteral.Text = Titles.Notifications;
-            this.VersionLiteral.Text = GetProductVersion();
+         //   this.VersionLiteral.Text = GetProductVersion();
             this.FooterLiteral.Text = GetFooter();
         }
 
@@ -61,7 +61,8 @@ namespace MixERP.Net.FrontEnd
 
         public static string GetFooter()
         {
-            const string footer = @"<p>Copyright © 2013-2015. MixERP is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 3 of the License.</p><p class=""footer-links""><a href=""http://mixerp.org/forum/"" target=""_blank"">Support</a><a href=""http://mixerp.org/contact-us/"" target=""_blank"">Contact Us</a></p>";
+            //  const string footer = @"<p>Copyright © 2013-2015. MixERP is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 3 of the License.</p><p class=""footer-links""><a href=""http://mixerp.org/forum/"" target=""_blank"">Support</a><a href=""http://mixerp.org/contact-us/"" target=""_blank"">Contact Us</a></p>";
+            const string footer = @"<p>Copyright © 2016-2017. This software is build for SVH DhanvantariGroup from GD Group Softwares.  </p><p class=""footer-links""><a href=""#"" target=""_blank"">Call</a><a href=""#"" target=""_blank"">Contact Us</a></p>";
 
             return footer;
         }

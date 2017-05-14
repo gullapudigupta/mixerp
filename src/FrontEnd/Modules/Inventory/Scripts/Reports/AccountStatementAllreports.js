@@ -44,10 +44,13 @@ $(document).ready(function () {
     loadStores();
     createCascadingPair(itemSelect, itemCodeInputText);
     createFlaggedRows(statementGridView);
-   
+    initiliseDataRangeField();
 
 });
+function initiliseDataRangeField() {
+    initialiseDateFunctions(DaterangeTextBoxnputText);
 
+}
 
 function loadItems() {
     var selected = itemCodeInputText.val();
@@ -78,6 +81,13 @@ printButton.click(function () {
     var storeId = storeIdHidden.val();
     var from = new Date(window.parseLocalizedDate(fromDateTextBox.val())).toDateString();
     var to = new Date(window.parseLocalizedDate(toDateTextBox.val())).toDateString();
+   var dateRanges= getStartEndDate(DaterangeTextBoxnputText);
+   
+
+   //var from = new Date(window.parseLocalizedDate(fromDateTextBox.val())).toDateString();
+   //var to = new Date(window.parseLocalizedDate(toDateTextBox.val())).toDateString();
+   from = dateRanges.start;
+   to = dateRanges.end;
 
 
     if (isNullOrWhiteSpace(itemCode)) {

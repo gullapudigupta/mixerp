@@ -22,8 +22,9 @@ using PetaPoco;
 
 namespace MixERP.Net.Core.Modules.Inventory.Reports
 {
-    public partial class AccountStatement : MixERPUserControl
+    public partial class StockExistenceReport : MixERPUserControl
     {
+
         public override void OnControlLoad(object sender, EventArgs e)
         {
             this.CreateHeader(this.Placeholder1);
@@ -184,6 +185,7 @@ namespace MixERP.Net.Core.Modules.Inventory.Reports
         private Button showButton;
         private MixERPGridView statementGridView;
         private HtmlInputText itemCodeInputText;
+        private HtmlInputText DaterangeTextBox;
         private HtmlSelect itemSelect;
         private HtmlSelect storeSelect;
         private HiddenField storeIdHidden;
@@ -227,6 +229,14 @@ namespace MixERP.Net.Core.Modules.Inventory.Reports
                 this.itemCodeInputText.Dispose();
                 this.itemCodeInputText = null;
             }
+
+            if (this.DaterangeTextBox != null)
+            {
+                this.DaterangeTextBox.Dispose();
+                this.DaterangeTextBox = null;
+            }
+
+            
 
             if (this.itemSelect != null)
             {
@@ -433,15 +443,45 @@ namespace MixERP.Net.Core.Modules.Inventory.Reports
         {
             this.fromDateTextBox = new DateTextBox();
             this.fromDateTextBox.ID = "FromDateTextBox";
-            this.fromDateTextBox.OfficeId = AppUsers.GetCurrent().View.OfficeId.ToInt();
-
             this.fromDateTextBox.Mode = FrequencyType.FiscalYearStartDate;
             this.fromDateTextBox.Catalog = AppUsers.GetCurrentUserDB();
-          
+            this.fromDateTextBox.OfficeId = AppUsers.GetCurrent().View.OfficeId.ToInt();
+
             using (HtmlGenericControl field = this.GetDateField(Titles.From, this.fromDateTextBox))
             {
                 container.Controls.Add(field);
             }
+        }
+
+
+        private void AddDateRangeTextBox(HtmlGenericControl container)
+        {
+
+
+            using (HtmlGenericControl field = HtmlControlHelper.GetField())
+            {
+                using (HtmlGenericControl label = HtmlControlHelper.GetLabel("DateRange", "DaterangeTextBox"))
+                {
+                    field.Controls.Add(label);
+                }
+
+                this.DaterangeTextBox = new HtmlInputText();
+                this.DaterangeTextBox.ID = "DaterangeTextBoxnputText";
+                field.Controls.Add(this.DaterangeTextBox);
+
+                container.Controls.Add(field);
+            }
+
+           // this.DaterangeTextBox = new DateTextBox();
+           // this.DaterangeTextBox.ID = "DaterangeTextBox";
+           //// this.fromDateTextBox.Mode = FrequencyType.FiscalYearStartDate;
+           // this.DaterangeTextBox.Catalog = AppUsers.GetCurrentUserDB();
+           // this.DaterangeTextBox.OfficeId = AppUsers.GetCurrent().View.OfficeId.ToInt();
+           // container.Controls.Add(this.DaterangeTextBox);
+            //using (HtmlGenericControl field = this.GetDateField(Titles.From, this.DaterangeTextBox))
+            //{
+            //    container.Controls.Add(field);
+            //}
         }
 
         private void AddShowButton(HtmlGenericControl container)
@@ -468,11 +508,10 @@ namespace MixERP.Net.Core.Modules.Inventory.Reports
         {
             this.toDateTextBox = new DateTextBox();
             this.toDateTextBox.ID = "ToDateTextBox";
-            this.toDateTextBox.OfficeId = AppUsers.GetCurrent().View.OfficeId.ToInt();
-
             this.toDateTextBox.Mode = FrequencyType.FiscalYearEndDate;
             this.toDateTextBox.Catalog = AppUsers.GetCurrentUserDB();
-           
+            this.toDateTextBox.OfficeId = AppUsers.GetCurrent().View.OfficeId.ToInt();
+
             using (HtmlGenericControl field = this.GetDateField(Titles.To, this.toDateTextBox))
             {
                 container.Controls.Add(field);
@@ -515,6 +554,7 @@ namespace MixERP.Net.Core.Modules.Inventory.Reports
                 this.AddStoreSelectField(fields);
                 this.AddFromDateTextBox(fields);
                 this.AddToDateTextBox(fields);
+                this.AddDateRangeTextBox(fields);
                 this.AddShowButton(fields);
                 container.Controls.Add(fields);
             }

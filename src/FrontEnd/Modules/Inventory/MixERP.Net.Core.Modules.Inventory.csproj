@@ -84,6 +84,7 @@
     <Content Include="Entry\TransferRequest.ascx" />
     <Content Include="Mix Open Foundation.snk" />
     <Content Include="packages.config" />
+    <Content Include="Scripts\Reports\AccountStatementAllreports.js" />
     <Content Include="Scripts\Setup\Parties\Entry.js" />
     <Content Include="Services\Setup\Parties.asmx" />
     <Content Include="Services\Setup\PartyInfo.asmx" />
@@ -178,6 +179,7 @@
     <Content Include="Setup\ShippingAddresses.ascx" />
     <Content Include="Setup\UOM.ascx" />
     <Content Include="Setup\Variants.ascx" />
+    <Content Include="Reports\StockExistenceReport.ascx" />
     <Content Include="Transfer.ascx" />
     <Content Include="TransferAcknowledgement.ascx" />
     <Content Include="TransferAuthorization.ascx" />
@@ -494,6 +496,13 @@
     </Compile>
     <Compile Include="Setup\Variants.ascx.designer.cs">
       <DependentUpon>Variants.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\StockExistenceReport.ascx.cs">
+      <DependentUpon>StockExistenceReport.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\StockExistenceReport.ascx.designer.cs">
+      <DependentUpon>StockExistenceReport.ascx</DependentUpon>
     </Compile>
     <Compile Include="Transfer.ascx.cs">
       <DependentUpon>Transfer.ascx</DependentUpon>

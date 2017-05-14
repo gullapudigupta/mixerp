@@ -28,7 +28,7 @@
         {
             iFrame.TagName = "iframe";
             iFrame.Attributes.Add("src", this.ResolveUrl("~/Reports/ReportViewer.aspx?Id=" + this.RouteData.Values["path"]));
-            iFrame.Attributes.Add("style", "width:100%;border:1px solid #C0C0C0;");
+            iFrame.Attributes.Add("style", "width:100%;border:1px solid #C0C0C0;"); 
             this.IFramePlaceholder.Controls.Add(iFrame);
         }
     }

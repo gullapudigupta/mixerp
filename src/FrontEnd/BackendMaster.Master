@@ -55,10 +55,11 @@
                     <div class="twelve wide column">
                         <div id="RightMenu">
                             <div class="ui inverted theme attached stackable menu">
-                                <a class="item" href="http://mixerp.org/" target="_blank">
+                             <%--   <a class="item" href="http://mixerp.org/" target="_blank">--%>
+                                  <a class="item" href="#" target="_blank">
                                     <i class="anchor icon"></i>
-                                    MixERP
-                                <asp:Literal ID="VersionLiteral" runat="server" />
+                                    GD GroupSoftware
+                               
 
                                 </a>
                                 <a class="item">
@@ -77,10 +78,10 @@
                                     <div id="Notification" class="ui vertical stackable menu">
                                     </div>
                                 </div>
-                                <a class="item" href="http://docs.mixerp.org/" target="_blank">
+                               <%--  <a class="item" href="#" target="_blank">
                                     <i class="book basic icon"></i>
-                                    <asp:Literal runat="server" ID="MixERPDocumentationLiteral" />
-                                </a>
+                                   <asp:Literal runat="server" ID="MixERPDocumentationLiteral" />
+                                </a>--%>
                                 <div class="right menu">
                                     <div class="ui simple dropdown item">
                                         <i class="icon smile"></i>
@@ -151,9 +152,9 @@
             <div class="sixteen wide theme column" id="Footer">
                 <div class="ui stackable page grid">
                     <div class="four wide column">
-                        <a href="http://mixerp.org" target="_blank">
+                  <%--      <a href="http://mixerp.org" target="_blank">
                             <img src="/Static/images/powered-by.png" />
-                        </a>
+                        </a>--%>
                     </div>
                     <div class="twelve wide column">
                         <div class="footer-text">

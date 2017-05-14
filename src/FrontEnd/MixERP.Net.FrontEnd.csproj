@@ -551,6 +551,7 @@
     <Content Include="Scripts\Datamaps\datamaps.all.min.js" />
     <Content Include="Scripts\Datamaps\topojson.js" />
     <Content Include="Scripts\date.js" />
+    <Content Include="Scripts\DatePickerScript\DatePickerInitialisation.js" />
     <Content Include="Scripts\inflection-js\inflection.js" />
     <Content Include="Scripts\inflection-js\test\inflection_test.html" />
     <Content Include="Scripts\jquery-1.6.4.js" />
