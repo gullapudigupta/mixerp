@@ -58,15 +58,6 @@ namespace MixERP.Net.FrontEnd {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// CatalogLiteral control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal CatalogLiteral;
-        
-        /// <summary>
         /// BranchNameLiteral control.
         /// </summary>
         /// <remarks>

@@ -3,7 +3,7 @@ var dateTextBox = $("#DateTextBox");
 var errorLabel = $("#ErrorLabel");
 var itemIdHidden = $("#ItemIdHidden");
 var itemCodeInputText = $("#ItemCodeInputText");
-var itemSoldPointsInputtext = $("#ItemCodePointsText");
+var itemSoldPointsInputtext = $("#ItemSoldPointsText");
 var itemSelect = $("#ItemSelect");
 var quantityInputText = $("#QuantityInputText");
 var referenceNumberInputText = $("#ReferenceNumberInputText");
@@ -247,8 +247,10 @@ function GetCredit(table, index) {
 };
 
 itemSelect.change(function () {
+   
     itemCodeInputText.val(itemSelect.getSelectedValue());
-   var itemSoldPointsValue= getSelectedItemData(window.dataInstances.itemsData, itemSelect.getSelectedValue(), "ItemCode");
+    var itemSoldPointsValue = getSelectedItemData(window.dataInstances.itemsData, itemSelect.getSelectedValue(), "ItemCode");
+ 
    itemSoldPointsInputtext.val(itemSoldPointsValue);
     //itemPointsInputtext.va
     loadUnits();

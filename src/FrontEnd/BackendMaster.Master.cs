@@ -37,7 +37,7 @@ namespace MixERP.Net.FrontEnd
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.CatalogLiteral.Text = "GD Group " + AppUsers.GetCurrentUserDB();
+         //   this.CatalogLiteral.Text = "GD Group " + AppUsers.GetCurrentUserDB();
             this.BranchNameLiteral.Text = AppUsers.GetCurrent().View.OfficeName;
             this.SignOutLiteral.Text = Titles.SignOut;
             this.UserGreetingLiteral.Text = String.Format(CultureManager.GetCurrent(), Labels.UserGreeting,

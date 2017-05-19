@@ -30,6 +30,7 @@ var priceInputText = $("#PriceInputText");
 var priceTypeSelect = $("#PriceTypeSelect");
 var priceTypeIdHidden = $("#PriceTypeIdHidden");
 
+var itemSoldPointsInputtext = $("#ItemSoldPointsText");
 var quantityInputText = $("#QuantityInputText");
 
 var runningTotalInputText = $("#RunningTotalInputText");
@@ -169,6 +170,11 @@ shippingCompanySelect.blur(function () {
 
 function itemSelect_OnBlur() {
     itemCodeInputText.val(itemSelect.getSelectedValue());
+  
+
+    var itemSoldPointsValue = getSelectedItemData(window.PageloaditemsData, itemSelect.getSelectedValue(), "ItemCode");
+    
+    itemSoldPointsInputtext.val(itemSoldPointsValue);
 
     var isCompoundItem = itemSelect.find(":selected").closest("optgroup").data("compound-item");
 
@@ -189,7 +195,17 @@ function itemSelect_OnBlur() {
     getPrice();
 };
 
+function getSelectedItemData(data, key, Column) {
+    var returnresult = 0;
+    for (var i = 0; i < data.length; i++) {
+        var tempData = data[i];
 
+        if (tempData[Column] === key) {
+            returnresult = tempData["ItemSoldPoints"];
+        }
+    }
+    return returnresult;
+}
 function processCallBackActions() {
     var itemId = parseInt(itemIdHidden.val() || 0);
 
@@ -596,6 +612,7 @@ function loadCostCenters() {
 };
 
 function loadItems() {
+    
     url = "/Modules/Inventory/Services/ItemData.asmx/GetItems";
     data = appendParameter("", "tranBook", tranBook);
     data = getData(data);
@@ -612,7 +629,7 @@ function loadItems() {
         compoundItemGroup.attr("data-compound-item", "true");
 
         var items = msg.d;
-
+        PageloaditemsData = items;
         $(items).each(function () {
             var item = $("<option/>");
             item.prop("value", this.ItemCode);
@@ -1278,6 +1295,7 @@ function getMergeModel() {
 
 //Page Load Event
 $(document).ready(function () {
+    window.PageloaditemsData = {};
     $(".form-table td").each(function () {
         var content = $(this).html();
         if (!content.trim()) {

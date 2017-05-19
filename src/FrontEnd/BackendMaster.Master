@@ -64,7 +64,8 @@
                                 </a>
                                 <a class="item">
                                     <i class="database icon"></i>
-                                    <asp:Literal runat="server" ID="CatalogLiteral" />
+                                   <%-- <asp:Literal runat="server" ID="CatalogLiteral" />--%>
+                                    GD ERP System
                                 </a>
                                 <a class="item">
                                     <i class="home icon"></i>
