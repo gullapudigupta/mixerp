@@ -19,7 +19,7 @@ var grandTotalInputText = $("#GrandTotalInputText");
 var itemCodeInputText = $("#ItemCodeInputText");
 var itemIdHidden = $("#ItemIdHidden");
 var itemSelect = $("#ItemSelect");
-var ItemSoldPoints = $('#ItemSoldPointsText');
+
 var partyIdHidden = $("#PartyIdHidden");
 var partySelect = $("#PartySelect");
 var partyCodeInputText = $("#PartyCodeInputText");
@@ -760,7 +760,6 @@ var addRow = function () {
     itemCodeInputText.val(itemSelect.getSelectedValue());
     var itemCode = itemCodeInputText.val();
     var itemName = itemSelect.getSelectedText();
-    var itemPoints = ItemSoldPoints.val();
     var quantity = parseInt(quantityInputText.val() || 0);
     var unitId = parseInt(unitIdHidden.val() || 0);
     var unitName = unitNameHidden.val();
@@ -847,7 +846,7 @@ var addRow = function () {
             removeDirty(unitSelect);
 
             if (!verifyStock || !isSales) {
-                addRowToTable(itemCode, itemName, quantity, unitName, price, discount, shippingCharge, tax, computedTax, itemPoints);
+                addRowToTable(itemCode, itemName, quantity, unitName, price, discount, shippingCharge, tax, computedTax);
                 return;
             };
 
@@ -855,7 +854,7 @@ var addRow = function () {
                 var isStockItem = ajaxIsStockItemResult.d;
 
                 if (!isStockItem) {
-                    addRowToTable(itemCode, itemName, quantity, unitName, price, discount, shippingCharge, tax, computedTax, itemPoints);
+                    addRowToTable(itemCode, itemName, quantity, unitName, price, discount, shippingCharge, tax, computedTax);
                     return;
                 };
 
@@ -868,7 +867,7 @@ var addRow = function () {
                         return;
                     };
 
-                    addRowToTable(itemCode, itemName, quantity, unitName, price, discount, shippingCharge, tax, computedTax, itemPoints);
+                    addRowToTable(itemCode, itemName, quantity, unitName, price, discount, shippingCharge, tax, computedTax);
                 });
             });
         });
@@ -897,9 +896,7 @@ function addCompoundItems() {
     });
 };
 
-var addRowToTable = function (itemCode, itemName, quantity, unitName, price, discount, shippingCharge, tax, computedTax, itemPoints) {
-
-    debugger;
+var addRowToTable = function (itemCode, itemName, quantity, unitName, price, discount, shippingCharge, tax, computedTax) {
     var editMode = (addButton.val() === Resources.Titles.Update());
     var updateIndex = parseInt(addButton.attr("data-update-index") || 0);
     var rows = $("#ProductGridView").find("tbody tr:not(:last-child)");
@@ -914,16 +911,16 @@ var addRowToTable = function (itemCode, itemName, quantity, unitName, price, dis
 
             if (getColumnText(row, 0) === itemCode &&
                 getColumnText(row, 1) === itemName && //Same Item
-                getColumnText(row, 4) === unitName && //Same Unit
-                parseFloat2(getColumnText(row, 5)) === price &&//Same Price
-                getColumnText(row, 10) === tax //Same Tax
+                getColumnText(row, 3) === unitName && //Same Unit
+                parseFloat2(getColumnText(row, 4)) === price &&//Same Price
+                getColumnText(row, 9) === tax //Same Tax
                 ) {
-                setColumnText(row, 3, getFormattedNumber(parseInt2(getColumnText(row, 3)) + quantity, true));
-                setColumnText(row, 6, getFormattedNumber(parseFloat2(getColumnText(row, 6)) + amount));
-                setColumnText(row, 7, getFormattedNumber(parseFloat2(getColumnText(row, 7)) + discount));
-                setColumnText(row, 8, getFormattedNumber(parseFloat2(getColumnText(row, 8)) + shippingCharge));
-                setColumnText(row, 9, getFormattedNumber(parseFloat2(getColumnText(row, 9)) + subTotal));
-                setColumnText(row, 11, getFormattedNumber(parseFloat2(getColumnText(row, 11)) + computedTax));
+                setColumnText(row, 2, getFormattedNumber(parseInt2(getColumnText(row, 2)) + quantity, true));
+                setColumnText(row, 5, getFormattedNumber(parseFloat2(getColumnText(row, 5)) + amount));
+                setColumnText(row, 6, getFormattedNumber(parseFloat2(getColumnText(row, 6)) + discount));
+                setColumnText(row, 7, getFormattedNumber(parseFloat2(getColumnText(row, 7)) + shippingCharge));
+                setColumnText(row, 8, getFormattedNumber(parseFloat2(getColumnText(row, 8)) + subTotal));
+                setColumnText(row, 10, getFormattedNumber(parseFloat2(getColumnText(row, 10)) + computedTax));
 
                 addDanger(row);
 
@@ -934,7 +931,7 @@ var addRowToTable = function (itemCode, itemName, quantity, unitName, price, dis
     };
 
     if (!match) {
-        var html = "<td>" + itemCode + "</td><td>" + itemName + "</td><td>"+itemPoints + "</td><td class='text-right'>" + getFormattedNumber(quantity, true) + "</td><td>" + unitName + "</td><td class='text-right'>" + getFormattedNumber(price) + "</td><td class='text-right'>" + getFormattedNumber(amount) + "</td><td class='text-right'>" + getFormattedNumber(discount) + "</td><td class='text-right'>" + getFormattedNumber(shippingCharge) + "</td><td class='text-right'>" + getFormattedNumber(subTotal) + "</td><td>" + tax + "</td><td class='text-right'>" + getFormattedNumber(computedTax)
+        var html = "<td>" + itemCode + "</td><td>" + itemName + "</td><td class='text-right'>" + getFormattedNumber(quantity, true) + "</td><td>" + unitName + "</td><td class='text-right'>" + getFormattedNumber(price) + "</td><td class='text-right'>" + getFormattedNumber(amount) + "</td><td class='text-right'>" + getFormattedNumber(discount) + "</td><td class='text-right'>" + getFormattedNumber(shippingCharge) + "</td><td class='text-right'>" + getFormattedNumber(subTotal) + "</td><td>" + tax + "</td><td class='text-right'>" + getFormattedNumber(computedTax)
             + "</td><td><a class='pointer' onclick='editRow($(this));'><i class='ui edit icon'></i></a><a class='pointer' onclick='removeRow($(this));summate();'><i class='ui delete icon'></i></a><a class='pointer' onclick='toggleDanger($(this));'><i class='ui pointer check mark icon'></a></i><a class='pointer' onclick='toggleSuccess($(this));'><i class='ui pointer thumbs up icon'></i></a></td>";
 
         if (editMode) {
