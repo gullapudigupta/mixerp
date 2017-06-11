@@ -42,13 +42,21 @@ namespace MixERP.Net.WebControls.StockTransactionFactory.Helpers
             {
                 StockDetail detail = new StockDetail();
                 detail.ItemCode = item[0];
-                detail.Quantity = Conversion.TryCastInteger(item[2]);
-                detail.UnitName = item[3];
-                detail.Price = Conversion.TryCastDecimal(item[4]);
-                detail.Discount = Conversion.TryCastDecimal(item[6]);
-                detail.ShippingCharge = Conversion.TryCastDecimal(item[7]);
-                detail.TaxForm = item[9];
-                detail.Tax = Conversion.TryCastDecimal(item[10]);
+                //detail.Quantity = Conversion.TryCastInteger(item[2]);
+                //detail.UnitName = item[3];
+                //detail.Price = Conversion.TryCastDecimal(item[4]);
+                //detail.Discount = Conversion.TryCastDecimal(item[6]);
+                //detail.ShippingCharge = Conversion.TryCastDecimal(item[7]);
+                //detail.TaxForm = item[9];
+                //detail.Tax = Conversion.TryCastDecimal(item[10]);
+
+                detail.Quantity = Conversion.TryCastInteger(item[3]);
+                detail.UnitName = item[4];
+                detail.Price = Conversion.TryCastDecimal(item[5]);//5
+                detail.Discount = Conversion.TryCastDecimal(item[7]);//7
+                detail.ShippingCharge = Conversion.TryCastDecimal(item[8]);//8
+                detail.TaxForm = item[10];//10
+                detail.Tax = Conversion.TryCastDecimal(item[11]);//11
                 detail.StoreId = storeId;
 
                 details.Add(detail);
